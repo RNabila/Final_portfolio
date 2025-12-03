@@ -590,7 +590,7 @@
                 <li><a href="#" onclick="showPage('aboutme')" class="nav-link">About me</a></li>
                 <li><a href="#" onclick="showPage('projects')" class="nav-link">Assignments</a></li>
                 <li><a href="#" onclick="showPage('competitions')" class="nav-link">Projects</a></li>
-                <li><a class="#" onclick="showPage('reflection')">Reflection</a></li>
+                <li><a class="#" onclick="showPage('reflection')" class="nav-link">Reflection</a></li>
 
                
             </ul>
@@ -1223,7 +1223,7 @@ education, empathy, and positive change in the world.
 
     <script>
         // avigation and Page Management
-        function showPage(pageId) {
+        function showPage(pageId, event) {
             // Hide all pages
             document.querySelectorAll('.page-section').forEach(section => {
                 section.classList.remove('active');
