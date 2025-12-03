@@ -590,7 +590,7 @@
                 <li><a href="#" onclick="showPage('aboutme')" class="nav-link">About me</a></li>
                 <li><a href="#" onclick="showPage('projects')" class="nav-link">Assignments</a></li>
                 <li><a href="#" onclick="showPage('competitions')" class="nav-link">Projects</a></li>
-                <li><a href="#" onclick="showPage('reflection')" class="nav-link">Reflection</a></li>
+                <li><a href="#" onclick="showPage('reflection'); return false;" class="nav-link">Reflection</a></li>
 
                
             </ul>
@@ -1223,20 +1223,27 @@ education, empathy, and positive change in the world.
 
     <script>
         // avigation and Page Management
-        function showPage(pageId) {
-            // Hide all pages
-            document.querySelectorAll('.page-section').forEach(section => {
-                section.classList.remove('active');
-            });
-            
-            //this part shows selected page
-            document.getElementById(pageId).classList.add('active');
-            
-            //updatesd navigation
-            document.querySelectorAll('.nav-link').forEach(link => {
-                link.classList.remove('active');
-            });
-            event.target.classList.add('active');
+function showPage(pageId) {
+    // Hide all pages
+    document.querySelectorAll('.page-section').forEach(section => {
+        section.classList.remove('active');
+    });
+    
+    //this part shows selected page
+    document.getElementById(pageId).classList.add('active');
+    
+    //updatesd navigation
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.classList.remove('active');
+    });
+    
+    // Find and activate the corresponding nav link
+    const navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach(link => {
+        if (link.getAttribute('onclick') && link.getAttribute('onclick').includes(pageId)) {
+            link.classList.add('active');
+        }
+    });
             
             //Scroll to top
             window.scrollTo(0, 0);
